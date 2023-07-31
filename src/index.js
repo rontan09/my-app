@@ -3,11 +3,53 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import ErrorPage from "./error";
+
+import { Authentication } from "./pages/Authentication/Authentication";
+import { Dns } from "./pages/Dns/Dns";
+import { Image } from "./pages/Image/Image";
+import { Public } from "./pages/Public/Public";
+import { Functions } from "./pages/Functions/Functions";
+
+
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Link,
+} from "react-router-dom";
+
+
+const router = createBrowserRouter([
+  {
+    path: "/", element: (<App /> ),  errorElement: <ErrorPage />,
+  },
+  {
+    path: "/authentication",
+    element: <Authentication />,
+  },
+  {
+    path: "/dns",
+    element: <Dns />,
+  },
+  {
+    path: "/image",
+    element: <Image />,
+  },
+  {
+    path: "/public",
+    element: <Public />,
+  },
+  {
+    path: "/functions",
+    element: <Functions />,
+  },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
